@@ -32,21 +32,43 @@ public class Main {
         final int MIN = 0;
 
         int dia;
+        int dMax = 0;
+        int dMin = 0;
         int lluvia;
         int tLluvia = 0;
+        int maxLluvia = 0;
+        int minLluvia = 500;
 
         //Inicio bucle
         dia = 1;
-
+        System.out.printf("Control de lluvias semanal%n");
+        System.out.println("=============================");
         do {
             int valor = RND.nextInt(MAX - MIN + 1) + MIN;
             tLluvia += valor;
             lluvia = valor;
-            System.out.printf("Lluvia durante el día %d ....: %d Litros por metro cuadrado%n", dia, lluvia);
-            dia++;
+            System.out.printf("Lluvia durante el día %d ....: "
+                    + "%d L/metro cuadrado%n", dia, lluvia);
+            if (maxLluvia <= lluvia) {
+                maxLluvia = lluvia;
+                dMax = dia;
 
-        } while (dia <= 7);
+            }
+            if (minLluvia >= lluvia) {
+                minLluvia = lluvia;
+                dMin = dia;
+            }
+            dia++;
+        } while (dia
+                <= 7);
+        System.out.println("---");
         System.out.printf("Lluvia total durante la semana ....: %d%n", tLluvia);
+        //Día lluvia máxima
+        System.out.printf("Lluvia máxima registrada fue el día"
+                + " %d con ..: %d L/metros cuadrados%n", dMax, maxLluvia);
+        //Día lluvia mínima
+        System.out.printf("Lluvia mínima registrada fue el día"
+                + " %d con ..: %d L/metros cuadrados%n", dMin, minLluvia);
         System.out.println("END");
 
     }
